@@ -13,17 +13,18 @@ struct StructureArray02
     unsigned short uint_State;
     unsigned short uint_Spare1;
     unsigned short uint_OutputState[4];
+    unsigned short uint_MotorSpeed[6];//added
     unsigned short uint_CMStatus;
-    unsigned short uint_BarecodeReadCounter;
+    unsigned short uint_BarcodeReadCounter;
     unsigned short uint_DestinationReadCounter;
     unsigned short uint_ConfirmationReadCounter;
 
     unsigned short uint_ScanNotificationCounter;  // SO1 message for Amazon
-    unsigned short uint_BarecodeIdLocationLength;
-    char           byte_BarecodeIdLocation[8];
+    unsigned short uint_BarcodeIdLocationLength;
+    char           byte_BarcodeIdLocation[8];
     unsigned short uint_SequentialNumber;
-    unsigned short uint_BarecodeLength;
-    char           byte_Barecode[28];
+    unsigned short uint_BarcodeLength;
+    char           byte_Barcode[28];
 
     unsigned int   uint_IntraloxSortMsgCounter;  // Sort message for intralox
     unsigned int   uint_IntraloxSortMsgPLCID;
@@ -35,10 +36,10 @@ struct StructureArray02
 
     unsigned short uint_DivertNotificationCounter;  // S04 message for Amazon
     unsigned short uint_DivertSequentialNumber;
-    unsigned short uint_DivertBarecodeIdLocationLength;
-    unsigned short uint_DivertBarecodeLength;
-    char           byte_DivertBarecodeIdLocation[8];
-    char           byte_DivertBarecode[28];
+    unsigned short uint_DivertBarcodeIdLocationLength;
+    unsigned short uint_DivertBarcodeLength;
+    char           byte_DivertBarcodeIdLocation[8];
+    char           byte_DivertBarcode[28];
     unsigned short uint_DestRequestedLength;
     unsigned short uint_SortedDestLength;
     char           byte_DestRequested[8];
@@ -55,44 +56,23 @@ struct StructureArray02
     unsigned short uint_Spare3;
 
     unsigned int   uint_IntraloxInterlocksStatus;
-    unsigned int   uint_ChuteStatus[50];
+    char   byte_ChuteStatus[50];//changed
+
 };
 
-//StructureArray02 getArray02() {
-//
-//    StructureArray02 dataArray02;
-//
-//    dataArray02.ulong_CMAlive = 500;
-//    dataArray02.ulong_Mode = 1;
-//    dataArray02.ulong_State = 2;
-//    dataArray02.ulong_CMStatus = 3;
-//
-//    unsigned int temp_ulong_OutputState[40] = {
-//        50, 48, 50, 49, 45, 48, 56, 45,
-//        50, 51, 84, 48, 50, 58, 49, 56,
-//        58, 50, 51, 46, 54, 54, 48, 90,
-//        50, 51, 84, 48, 50, 58, 49, 56,
-//        50, 51, 84, 48, 50, 58, 49, 56
-//    };
-//    memcpy(dataArray02.ulong_OutputState, temp_ulong_OutputState, sizeof(unsigned int) * 40);
-//
-//    return dataArray02;
-//}
-//ostream& operator<<(ostream& os, const StructureArray02 da) {
-//    os << "{" << endl;
-//    os << " ulong_CMAlive: " << da.ulong_CMAlive << endl;
-//    os << " ulong_Mode: " << da.ulong_Mode << endl;
-//    os << " ulong_State: " << da.ulong_State << endl;
-//    os << " ulong_CMStatus: " << da.ulong_CMStatus << endl;
-//
-//    os << " ulong_OutputState: ";
-//    for (int i = 0; i < 40; i++)
-//        printf("%d ", da.ulong_OutputState[i]);
-//    os << endl;
-//
-//    os << "}" << endl;
-//    return os;
-//}
+StructureArray02 getArray02() {
+
+    StructureArray02 dataArray02 = {
+        1,2,3,4,{1,2,3,4},{1,2,3,4,5,6},1,2,3,4
+        ,1,2,{1,2,3,4,5,6,7,8},1,2,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8}
+        ,1,2,3,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8},1,2,3
+        ,1,2,3,4,{1,2,3,4,5,6,7,8},{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8},1,2,{1,2,3,4,5,6,7,8},{1,2,3,4,5,6,7,8},1,2
+        ,1,2,{1,2,3,4,5,6,7,8},1,2,3,4
+        ,1,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0}
+    };
+    return dataArray02;
+}
+
 Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> context,StructureArray02 array02){
     
     Local<Object> obj = Object::New(isolate);
@@ -102,21 +82,22 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
     obj->Set(context,String::NewFromUtf8(isolate,"uint_Spare1").ToLocalChecked(),Number::New(isolate, array02.uint_Spare1));
 
     Local<Array> uint_OutputState=Array::New(isolate,4);for(int i=0;i<4;i++){uint_OutputState->Set(context,i, Integer::New(isolate,array02.uint_OutputState[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_OutputState").ToLocalChecked(),uint_OutputState);
+    Local<Array> uint_MotorSpeed=Array::New(isolate,6);for(int i=0;i<6;i++){uint_MotorSpeed->Set(context,i, Integer::New(isolate,array02.uint_MotorSpeed[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_MotorSpeed").ToLocalChecked(),uint_MotorSpeed);
 
     obj->Set(context,String::NewFromUtf8(isolate,"uint_CMStatus").ToLocalChecked(),Number::New(isolate, array02.uint_CMStatus));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_BarecodeReadCounter").ToLocalChecked(),Number::New(isolate, array02.uint_BarecodeReadCounter));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_BarcodeReadCounter").ToLocalChecked(),Number::New(isolate, array02.uint_BarcodeReadCounter));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_DestinationReadCounter").ToLocalChecked(),Number::New(isolate, array02.uint_DestinationReadCounter));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_ConfirmationReadCounter").ToLocalChecked(),Number::New(isolate, array02.uint_ConfirmationReadCounter));
 
     obj->Set(context,String::NewFromUtf8(isolate,"uint_ScanNotificationCounter").ToLocalChecked(),Number::New(isolate, array02.uint_ScanNotificationCounter));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_BarecodeIdLocationLength").ToLocalChecked(),Number::New(isolate, array02.uint_BarecodeIdLocationLength));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_BarcodeIdLocationLength").ToLocalChecked(),Number::New(isolate, array02.uint_BarcodeIdLocationLength));
 
-    Local<Array> byte_BarecodeIdLocation=Array::New(isolate,8);for(int i=0;i<8;i++){byte_BarecodeIdLocation->Set(context,i, Integer::New(isolate,array02.byte_BarecodeIdLocation[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_BarecodeIdLocation").ToLocalChecked(),byte_BarecodeIdLocation);
+    Local<Array> byte_BarcodeIdLocation=Array::New(isolate,8);for(int i=0;i<8;i++){byte_BarcodeIdLocation->Set(context,i, Integer::New(isolate,array02.byte_BarcodeIdLocation[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_BarcodeIdLocation").ToLocalChecked(),byte_BarcodeIdLocation);
 
     obj->Set(context,String::NewFromUtf8(isolate,"uint_SequentialNumber").ToLocalChecked(),Number::New(isolate, array02.uint_SequentialNumber));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_BarecodeLength").ToLocalChecked(),Number::New(isolate, array02.uint_BarecodeLength));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_BarcodeLength").ToLocalChecked(),Number::New(isolate, array02.uint_BarcodeLength));
 
-    Local<Array> byte_Barecode=Array::New(isolate,28);for(int i=0;i<28;i++){byte_Barecode->Set(context,i, Integer::New(isolate,array02.byte_Barecode[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_Barecode").ToLocalChecked(),byte_Barecode);
+    Local<Array> byte_Barcode=Array::New(isolate,28);for(int i=0;i<28;i++){byte_Barcode->Set(context,i, Integer::New(isolate,array02.byte_Barcode[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_Barcode").ToLocalChecked(),byte_Barcode);
 
     obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxSortMsgCounter").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxSortMsgCounter));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxSortMsgPLCID").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxSortMsgPLCID));
@@ -129,11 +110,11 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
     obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxSortMsgLength").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxSortMsgLength));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertNotificationCounter").ToLocalChecked(),Number::New(isolate, array02.uint_DivertNotificationCounter));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertSequentialNumber").ToLocalChecked(),Number::New(isolate, array02.uint_DivertSequentialNumber));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertBarecodeIdLocationLength").ToLocalChecked(),Number::New(isolate, array02.uint_DivertBarecodeIdLocationLength));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertBarecodeLength").ToLocalChecked(),Number::New(isolate, array02.uint_DivertBarecodeLength));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertBarcodeIdLocationLength").ToLocalChecked(),Number::New(isolate, array02.uint_DivertBarcodeIdLocationLength));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertBarcodeLength").ToLocalChecked(),Number::New(isolate, array02.uint_DivertBarcodeLength));
 
-    Local<Array> byte_DivertBarecodeIdLocation=Array::New(isolate,8);for(int i=0;i<8;i++){byte_DivertBarecodeIdLocation->Set(context,i, Integer::New(isolate,array02.byte_DivertBarecodeIdLocation[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DivertBarecodeIdLocation").ToLocalChecked(),byte_DivertBarecodeIdLocation);
-    Local<Array> byte_DivertBarecode=Array::New(isolate,28);for(int i=0;i<28;i++){byte_DivertBarecode->Set(context,i, Integer::New(isolate,array02.byte_DivertBarecode[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DivertBarecode").ToLocalChecked(),byte_DivertBarecode);
+    Local<Array> byte_DivertBarcodeIdLocation=Array::New(isolate,8);for(int i=0;i<8;i++){byte_DivertBarcodeIdLocation->Set(context,i, Integer::New(isolate,array02.byte_DivertBarcodeIdLocation[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DivertBarcodeIdLocation").ToLocalChecked(),byte_DivertBarcodeIdLocation);
+    Local<Array> byte_DivertBarcode=Array::New(isolate,28);for(int i=0;i<28;i++){byte_DivertBarcode->Set(context,i, Integer::New(isolate,array02.byte_DivertBarcode[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DivertBarcode").ToLocalChecked(),byte_DivertBarcode);
 
     obj->Set(context,String::NewFromUtf8(isolate,"uint_DestRequestedLength").ToLocalChecked(),Number::New(isolate, array02.uint_DestRequestedLength));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_SortedDestLength").ToLocalChecked(),Number::New(isolate, array02.uint_SortedDestLength));

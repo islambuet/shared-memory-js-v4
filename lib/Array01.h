@@ -16,8 +16,8 @@ struct StructureArray01
 
     unsigned short uint_Data[4];
     unsigned short uint_BarcodeCounter;
-    unsigned short uint_BarecodeMsgLength;
-    char           byte_BarecodeMsg[64];
+    unsigned short uint_BarcodeMsgLength;
+    char           byte_BarcodeMsg[64];
 
     unsigned short uint_DestinationCounter;
     unsigned short uint_DestinationSequentialNumber;
@@ -31,7 +31,7 @@ struct StructureArray01
     unsigned short uint_ConfirmationCounter;
     unsigned short uint_ConfirmationSequentialNumber;
     unsigned short uint_ConfirmationDestination;
-    unsigned short uint_spare3;
+    unsigned short uint_ConfirmationSortCode;/////changed
 
     unsigned short uint_ScanNotificationReadCounter;
     unsigned short uint_IntraloxSortMsgReadCounter;
@@ -39,55 +39,24 @@ struct StructureArray01
     unsigned short uint_Cad99AnalogMsgReadCounter;
 
     unsigned short uint_DeviceConnected[4];
-    unsigned int   uint_IntraloxStatusStatus[3];
-    unsigned int   uint_ChuteStatus[50];
+    unsigned int   uint_IntraloxStatusStatus[3];//Intralox Interlocks
+    unsigned int   uint_ChuteStatus[50];// Chute status
 
 };
-//
-//StructureArray01 getArray01() {
-//
-//    StructureArray01 dataArray01;
-//
-//    dataArray01.ulong_msCounter = 34320540;
-//    dataArray01.ulong_Encoder = 1;
-//    dataArray01.ulong_Encoder2 = 2;
-//    dataArray01.ulong_Encoder3 = 3;
-//    dataArray01.ulong_PLCStatus = 4;
-//
-//    unsigned int temp_ulong_Data[40] = {
-//        5, 6, 7, 0, 0, 0, 0, 0, 0, 0,
-//        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-//        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-//        0, 0, 0, 0, 0, 0, 0, 8, 9, 10
-//    };
-//    memcpy(dataArray01.ulong_Data, temp_ulong_Data, sizeof(unsigned int) * 40);
-//
-//    unsigned int temp_ulong_DeviceConnected[2] = {
-//        11, 12
-//    };
-//    memcpy(dataArray01.ulong_DeviceConnected, temp_ulong_DeviceConnected, sizeof(unsigned int) * 2);
-//    return dataArray01;
-//
-//
-//}
-//ostream& operator<<(ostream& os, const StructureArray01 da) {
-//    os << "{" << endl;
-//    os << " ulong_msCounter: " << da.ulong_msCounter << endl;
-//    os << " ulong_Encoder: " << da.ulong_Encoder << endl;
-//    os << " ulong_Encoder2: " << da.ulong_Encoder2 << endl;
-//    os << " ulong_Encoder3: " << da.ulong_Encoder3 << endl;
-//    os << " ulong_PLCStatus: " << da.ulong_PLCStatus << endl;
-//    os  <<  "ulong_Data: ";
-//    for (int i = 0; i < 40; i++)
-//        printf("%d ", da.ulong_Data[i]);
-//    os << endl;
-//    os  <<  "ulong_DeviceConnected: ";
-//    for (int i = 0; i < 2; i++)
-//        printf("%d ", da.ulong_DeviceConnected[i]);
-//    os << endl;
-//    os << "}" << endl;
-//    return os;
-//}
+
+StructureArray01 getArray01() {
+
+    StructureArray01 dataArray01 =
+    {
+        54348784,961088068,961088068,961088034,0
+        ,{0,0,0,21845},48315,18,{60,83,84,102,122,104,109,103,66,57,75,95,48,48,49,95,118,62,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+        ,43898,1879,5,0,{83, 48, 50, 48,57, 49,  0,  0},0,0,{83, 48, 50, 49,55,  0,  0,  0}
+        ,0,0,0,0
+        ,35599,0,35594,9323
+        ,{151, 0, 0, 0},{0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0}
+    };
+    return dataArray01;
+}
 StructureArray01 getStructureArray01FromObject(Isolate* isolate,Local<Context> context,Local<Object> obj){
     StructureArray01 array_01;
     array_01.ulong_msCounter=obj->Get(context, String::NewFromUtf8(isolate,"ulong_msCounter").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
@@ -130,7 +99,7 @@ StructureArray01 getStructureArray01FromObject(Isolate* isolate,Local<Context> c
     array_01.uint_ConfirmationCounter=obj->Get(context, String::NewFromUtf8(isolate,"uint_ConfirmationCounter").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     array_01.uint_ConfirmationSequentialNumber=obj->Get(context, String::NewFromUtf8(isolate,"uint_ConfirmationSequentialNumber").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     array_01.uint_ConfirmationDestination=obj->Get(context, String::NewFromUtf8(isolate,"uint_ConfirmationDestination").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
-    array_01.uint_spare3=obj->Get(context, String::NewFromUtf8(isolate,"uint_spare3").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
+    array_01.uint_ConfirmationSortCode=obj->Get(context, String::NewFromUtf8(isolate,"uint_ConfirmationSortCode").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
 
     array_01.uint_ScanNotificationReadCounter=obj->Get(context, String::NewFromUtf8(isolate,"uint_ScanNotificationReadCounter").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     array_01.uint_IntraloxSortMsgReadCounter=obj->Get(context, String::NewFromUtf8(isolate,"uint_IntraloxSortMsgReadCounter").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
