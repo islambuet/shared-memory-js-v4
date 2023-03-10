@@ -5,7 +5,7 @@ try{
     //console.log(memory1,memory2)
     console.log("Press key for Write.")
     shared_memory.getch();
-    shared_memory.writeStringToMemory(memory1,"Hello there. I am shaiful.Writing from js");
+    shared_memory.writeStringToMemory(memory1,"From 1st");
     console.log("Write Completed.Press key for read From memory2.");
     shared_memory.getch();
     let message=shared_memory.readStringFromMemory(memory1);
