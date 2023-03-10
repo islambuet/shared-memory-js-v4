@@ -71,11 +71,11 @@ StructureArray01 getStructureArray01FromObject(Isolate* isolate,Local<Context> c
     }
 
     array_01.uint_BarcodeCounter=obj->Get(context, String::NewFromUtf8(isolate,"uint_BarcodeCounter").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
-    array_01.uint_BarecodeMsgLength=obj->Get(context, String::NewFromUtf8(isolate,"uint_BarecodeMsgLength").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
+    array_01.uint_BarcodeMsgLength=obj->Get(context, String::NewFromUtf8(isolate,"uint_BarcodeMsgLength").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
 
-    Local<Array> byte_BarecodeMsg=Local<Array>::Cast(obj->Get(context, String::NewFromUtf8(isolate,"byte_BarecodeMsg").ToLocalChecked()).ToLocalChecked());
+    Local<Array> byte_BarcodeMsg=Local<Array>::Cast(obj->Get(context, String::NewFromUtf8(isolate,"byte_BarcodeMsg").ToLocalChecked()).ToLocalChecked());
     for(int i=0;i<64;i++){
-        array_01.byte_BarecodeMsg[i]=byte_BarecodeMsg->Get(context, i).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
+        array_01.byte_BarcodeMsg[i]=byte_BarcodeMsg->Get(context, i).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     }
 
     array_01.uint_DestinationCounter=obj->Get(context, String::NewFromUtf8(isolate,"uint_DestinationCounter").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();

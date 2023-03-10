@@ -56,7 +56,7 @@ struct StructureArray02
     unsigned short uint_Spare3;
 
     unsigned int   uint_IntraloxInterlocksStatus;
-    char   byte_ChuteStatus[50];//changed
+    char   uint_ChuteStatus[50];//changed
 
 };
 
