@@ -1,87 +1,83 @@
 let array_02_value=  {
-    uint_CMAlive: 4,
-    uint_Mode: 2,
-    uint_State: 3,
-    uint_Spare1: 4,
-    uint_OutputState: [ 1, 2, 3, 4 ],
-    uint_CMStatus: 1,
-    uint_BarecodeReadCounter: 2,
-    uint_DestinationReadCounter: 3,
-    uint_ConfirmationReadCounter: 4,
-    uint_ScanNotificationCounter: 5,
-    uint_BarecodeIdLocationLength: 6,
-    byte_BarecodeIdLocation: [
-        1, 0, 2, 0,
-        3, 0, 4, 0
+    uint_CMAlive: 2003,
+    uint_Mode: 0,
+    uint_State: 0,
+    uint_Spare1: 0,
+    uint_OutputState: [ 34, 0, 0, 0 ],
+    uint_MotorSpeed: [ 0, 0, 0, 0, 0, 0 ],
+    uint_CMStatus: 0,
+    uint_BarcodeReadCounter: 48315,
+    uint_DestinationReadCounter: 43898,
+    uint_ConfirmationReadCounter: 0,
+    uint_ScanNotificationCounter: 35599,
+    uint_BarcodeIdLocationLength: 0,
+    byte_BarcodeIdLocation: [
+        0, 0, 0, 0,
+        0, 0, 0, 0
     ],
-    uint_SequentialNumber: 1,
-    uint_BarecodeLength: 2,
-    byte_Barecode: [
-        1, 2, 3, 4, 5, 6, 7, 8,
-        1, 0, 2, 0, 1, 2, 3, 4,
-        5, 6, 7, 8, 9, 0, 1, 2,
-        3, 4, 5, 6
+    uint_SequentialNumber: 0,
+    uint_BarcodeLength: 0,
+    byte_Barcode: [
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0
     ],
-    uint_IntraloxSortMsgCounter: 591879,
-    uint_IntraloxSortMsgPLCID: 67305985,
-    uint_IntraloxSortMsgBarecodeLength: 134678021,
+    uint_IntraloxSortMsgCounter: 0,
+    uint_IntraloxSortMsgPLCID: 0,
+    uint_IntraloxSortMsgBarecodeLength: 0,
     byte_IntraloxSortMsgBarecode: [
-        1, 0, 0, 0, 2, 0, 0, 0,
-        3, 0, 0, 0, 1, 2, 3, 4,
-        5, 6, 7, 8, 9, 0, 1, 2,
-        3, 4, 5, 6
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0
     ],
-    uint_IntraloxSortMsgDestRequested: 591879,
-    uint_IntraloxSortMsgReason: 67305985,
-    uint_IntraloxSortMsgLength: 134678021,
-    uint_DivertNotificationCounter: 1,
+    uint_IntraloxSortMsgDestRequested: 0,
+    uint_IntraloxSortMsgReason: 0,
+    uint_IntraloxSortMsgLength: 0,
+    uint_DivertNotificationCounter: 35594,
     uint_DivertSequentialNumber: 0,
-    uint_DivertBarecodeIdLocationLength: 2,
-    uint_DivertBarecodeLength: 0,
-    byte_DivertBarecodeIdLocation: [
-        3, 0, 0, 0,
-        1, 0, 2, 0
+    uint_DivertBarcodeIdLocationLength: 0,
+    uint_DivertBarcodeLength: 0,
+    byte_DivertBarcodeIdLocation: [
+        0, 0, 0, 0,
+        0, 0, 0, 0
     ],
-    byte_DivertBarecode: [
-        3, 0, 4, 0, 1, 2, 3, 4,
-        5, 6, 7, 8, 1, 2, 3, 4,
-        5, 6, 7, 8, 9, 0, 1, 2,
-        3, 4, 5, 6
+    byte_DivertBarcode: [
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0
     ],
-    uint_DestRequestedLength: 2055,
-    uint_SortedDestLength: 9,
+    uint_DestRequestedLength: 0,
+    uint_SortedDestLength: 0,
     byte_DestRequested: [
-        1, 2, 3, 4,
-        5, 6, 7, 8
+        0, 0, 0, 0,
+        0, 0, 0, 0
     ],
     byte_SortedDest: [
-        1, 0, 2, 0,
-        1, 2, 3, 4
+        0, 0, 0, 0,
+        0, 0, 0, 0
     ],
-    uint_SortedCode: 1541,
-    uint_Spare2: 2055,
-    uint_Cad99AnalogMsgCounter: 513,
-    uint_DeviceIdLength: 1027,
+    uint_SortedCode: 0,
+    uint_Spare2: 0,
+    uint_Cad99AnalogMsgCounter: 9323,
+    uint_DeviceIdLength: 5,
     byte_DeviceId: [
-        5, 6, 7, 8,
-        1, 0, 2, 0
+        83, 48, 50, 48,
+        50,  0,  0,  0
     ],
-    uint_LevelPercent: 1,
-    uint_InError: 2,
-    uint_NotInUse: 513,
-    uint_Spare3: 1027,
-    uint_IntraloxInterlocksStatus: 134678021,
-    uint_ChuteStatus: [
-        131073,    262147,      1, 67305985, 134678021,
-        33619977, 100992003, 591879, 67305985, 134678021,
-        33619977, 100992003, 591879, 67305985, 134678021,
-        9,         0,      0,        0,         0,
-        0,         0,      0,        0,         0,
-        0,         0,      0,        0,         0,
-        0,         0,      0,        0,         0,
-        0,         0,      0,        0,         0,
-        0,         0,      0,        0,         0,
-        0,         0,      0,        0,         0
+    uint_LevelPercent: 0,
+    uint_InError: 0,
+    uint_NotInUse: 0,
+    uint_Spare3: 0,
+    uint_IntraloxInterlocksStatus: 0,
+    byte_ChuteStatus: [
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0
     ]
 }
 module.exports ={value:array_02_value};

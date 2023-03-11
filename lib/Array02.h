@@ -56,7 +56,7 @@ struct StructureArray02
     unsigned short uint_Spare3;
 
     unsigned int   uint_IntraloxInterlocksStatus;
-    char   uint_ChuteStatus[50];//changed
+    char   byte_ChuteStatus[50];//changed
 
 };
 
@@ -135,7 +135,7 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
     obj->Set(context,String::NewFromUtf8(isolate,"uint_Spare3").ToLocalChecked(),Number::New(isolate, array02.uint_Spare3));
 
     obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxInterlocksStatus").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxInterlocksStatus));
-    Local<Array> uint_ChuteStatus=Array::New(isolate,50);for(int i=0;i<50;i++){uint_ChuteStatus->Set(context,i, Integer::New(isolate,array02.uint_ChuteStatus[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_ChuteStatus").ToLocalChecked(),uint_ChuteStatus);
+    Local<Array> byte_ChuteStatus=Array::New(isolate,50);for(int i=0;i<50;i++){byte_ChuteStatus->Set(context,i, Integer::New(isolate,array02.byte_ChuteStatus[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_ChuteStatus").ToLocalChecked(),byte_ChuteStatus);
 
     return obj;
 }
