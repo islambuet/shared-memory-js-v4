@@ -58,6 +58,21 @@ struct StructureArray02
     unsigned int   uint_IntraloxInterlocksStatus;
     char   byte_ChuteStatus[50];//changed
 
+    unsigned long ulong_TotPackagesInducted;
+    unsigned long ulong_TotSuccessfulDivert;
+    unsigned long ulong_AverageTput;
+    unsigned long ulong_Max3MinTput;
+    unsigned long ulong_TotSecSinceLastReset;
+    unsigned long ulong_TotSecEStop;
+    unsigned long ulong_TotSecFault;
+    unsigned long ulong_TotSecBlocked;
+    unsigned long ulong_TotSecIdle;
+    unsigned long ulong_TotSecInit;
+    unsigned long ulong_TotSecRunning;
+    unsigned long ulong_TotSecStarved;
+    unsigned long ulong_TotSecHeld;
+    unsigned long ulong_TotSecUnconstrained;
+
 };
 
 StructureArray02 getArray02() {
@@ -69,6 +84,7 @@ StructureArray02 getArray02() {
         ,1,2,3,4,{1,2,3,4,5,6,7,8},{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8},1,2,{1,2,3,4,5,6,7,8},{1,2,3,4,5,6,7,8},1,2
         ,1,2,{1,2,3,4,5,6,7,8},1,2,3,4
         ,1,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0}
+        ,1,2,3,4,5,6,7,8,9,10,11,123,132,141
     };
     return dataArray02;
 }
@@ -136,6 +152,21 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
 
     obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxInterlocksStatus").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxInterlocksStatus));
     Local<Array> byte_ChuteStatus=Array::New(isolate,50);for(int i=0;i<50;i++){byte_ChuteStatus->Set(context,i, Integer::New(isolate,array02.byte_ChuteStatus[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_ChuteStatus").ToLocalChecked(),byte_ChuteStatus);
+
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotPackagesInducted").ToLocalChecked(),Number::New(isolate, array02.ulong_TotPackagesInducted));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSuccessfulDivert").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSuccessfulDivert));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_AverageTput").ToLocalChecked(),Number::New(isolate, array02.ulong_AverageTput));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_Max3MinTput").ToLocalChecked(),Number::New(isolate, array02.ulong_Max3MinTput));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecSinceLastReset").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecSinceLastReset));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecEStop").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecEStop));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecFault").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecFault));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecBlocked").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecBlocked));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecIdle").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecIdle));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecInit").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecInit));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecRunning").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecRunning));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecStarved").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecStarved));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecHeld").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecHeld));
+    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecUnconstrained").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecUnconstrained));
 
     return obj;
 }

@@ -78,6 +78,20 @@ let array_02_value=  {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0
-    ]
+    ],
+    ulong_TotPackagesInducted: 0,
+    ulong_TotSuccessfulDivert: 0,
+    ulong_AverageTput: 0,
+    ulong_Max3MinTput: 0,
+    ulong_TotSecSinceLastReset: 0,
+    ulong_TotSecEStop: 0,
+    ulong_TotSecFault: 0,
+    ulong_TotSecBlocked: 0,
+    ulong_TotSecIdle: 0,
+    ulong_TotSecInit: 0,
+    ulong_TotSecRunning: 0,
+    ulong_TotSecStarved: 0,
+    ulong_TotSecHeld: 0,
+    ulong_TotSecUnconstrained: 0,
 }
 module.exports ={value:array_02_value};
