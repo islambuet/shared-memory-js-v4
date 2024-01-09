@@ -12,79 +12,86 @@ struct StructureArray02
     unsigned short uint_Mode;
     unsigned short uint_State;
     unsigned short uint_Spare1;
-    unsigned short uint_OutputState[4];
-    unsigned short uint_MotorSpeed[6];//added
+    unsigned short uint_OutputState[4];// 0:DO   1 : DO   2 : Enable drive b0 to b4
+    unsigned short uint_MotorSpeed[6];
     unsigned short uint_CMStatus;
-    unsigned short uint_BarcodeReadCounter;
-    unsigned short uint_DestinationReadCounter;
-    unsigned short uint_ConfirmationReadCounter;
+    //unsigned int   uint_MHE_ComData[10];
+    unsigned int   uint_MHE_ComData_Control;  // uint_MHE_ComData[0]
+    unsigned short uint_MHE_ComData_Mode;     // uint_MHE_ComData[4].0_15
+    unsigned short uint_MHE_ComData_Fault;    // uint_MHE_ComData[4].16_31
+    unsigned int   uint_MHE_ComData_Clear;    // uint_MHE_ComData[9].0
 
-    unsigned short uint_ScanNotificationCounter;  // SO1 message for Amazon
-    unsigned short uint_BarcodeIdLocationLength;
-    char           byte_BarcodeIdLocation[8];
-    unsigned short uint_SequentialNumber;
-    unsigned short uint_BarcodeLength;
-    char           byte_Barcode[28];
+    //unsigned int   uint_MHE_Id[20];
+    unsigned short uint_MHE_IdData_Align;       // uint_MHE_Id[0].0_15
+    unsigned short uint_MHE_IdData_PassNumber;  // uint_MHE_Id[0].16_31
+    unsigned int   uint_MHE_IdData_Vid_num1_8;  // uint_MHE_Id[1]
+    unsigned int   uint_MHE_IdData_Vid_num9_16; // uint_MHE_Id[2]
+    char           byte_MHE_IdData_PieceBcr[40];// uint_MHE_Id[3]-[12]
+    unsigned int   uint_MHE_IdData_GlobalId;    // uint_MHE_Id[13]
+    unsigned int   uint_MHE_IdData_PrjSpec;     // uint_MHE_Id[14]
+    unsigned short uint_MHE_IdData_SecurityRoutineCode;       // uint_MHE_Id[15].0_15
+    unsigned short uint_MHE_IdData_DynamicScreeningAlgo;  // uint_MHE_Id[15].16_31
+    unsigned int   uint_MHE_IdData_TsSSMMHHDD;  // uint_MHE_Id[16]
+    unsigned int   uint_MHE_IdData_TsMM__YYYY;  // uint_MHE_Id[17]
 
-    unsigned int   uint_IntraloxSortMsgCounter;  // Sort message for intralox
-    unsigned int   uint_IntraloxSortMsgPLCID;
-    unsigned int   uint_IntraloxSortMsgBarecodeLength;
-    char           byte_IntraloxSortMsgBarecode[28];
-    unsigned int   uint_IntraloxSortMsgDestRequested;
-    unsigned int   uint_IntraloxSortMsgReason;
-    unsigned int   uint_IntraloxSortMsgLength; //in mm
+    //      unsigned short uint_BarecodeReadCounter;
+    //      unsigned short uint_DestinationReadCounter;
+    //      unsigned short uint_ConfirmationReadCounter;
 
-    unsigned short uint_DivertNotificationCounter;  // S04 message for Amazon
-    unsigned short uint_DivertSequentialNumber;
-    unsigned short uint_DivertBarcodeIdLocationLength;
-    unsigned short uint_DivertBarcodeLength;
-    char           byte_DivertBarcodeIdLocation[8];
-    char           byte_DivertBarcode[28];
-    unsigned short uint_DestRequestedLength;
-    unsigned short uint_SortedDestLength;
-    char           byte_DestRequested[8];
-    char           byte_SortedDest[8];
-    unsigned short uint_SortedCode;
-    unsigned short uint_Spare2;
+    //      unsigned short uint_ScanNotificationCounter;  // SO1 message for Amazon
+    //      unsigned short uint_BarecodeIdLocationLength;
+    //      char           byte_BarecodeIdLocation[8];
+    //      unsigned short uint_SequentialNumber;
+    //      unsigned short uint_BarecodeLength;
+    //      char           byte_Barecode[28];
 
-    unsigned short uint_Cad99AnalogMsgCounter; // Cad99 message for Amazon
-    unsigned short uint_DeviceIdLength;
-    char           byte_DeviceId[8];
-    unsigned short uint_LevelPercent;
-    unsigned short uint_InError;
-    unsigned short uint_NotInUse;
-    unsigned short uint_Spare3;
+    //      unsigned int   uint_IntraloxSortMsgCounter;  // Sort message for intralox
+    //      unsigned int   uint_IntraloxSortMsgPLCID;
+    //      unsigned int   uint_IntraloxSortMsgBarecodeLength;
+    //      char           byte_IntraloxSortMsgBarecode[28];
+    //      unsigned int   uint_IntraloxSortMsgDestRequested;
+    //      unsigned int   uint_IntraloxSortMsgReason;
+    //      unsigned int   uint_IntraloxSortMsgLength; //in mm
 
-    unsigned int   uint_IntraloxInterlocksStatus;
-    char   byte_ChuteStatus[50];//changed
+    //      unsigned short uint_DivertNotificationCounter;  // S04 message for Amazon
+    //      unsigned short uint_DivertSequentialNumber;
+    //      unsigned short uint_DivertBarecodeIdLocationLength;
+    //      unsigned short uint_DivertBarecodeLength;
+    //      char           byte_DivertBarecodeIdLocation[8];
+    //      char           byte_DivertBarecode[28];
+    //      unsigned short uint_DestRequestedLength;
+    //      unsigned short uint_SortedDestLength;
+    //      char           byte_DestRequested[8];
+    //      char           byte_SortedDest[8];
+    //      unsigned short uint_SortedCode;
+    //      unsigned short uint_Spare2;
 
-    unsigned long ulong_TotPackagesInducted;
-    unsigned long ulong_TotSuccessfulDivert;
-    unsigned long ulong_AverageTput;
-    unsigned long ulong_Max3MinTput;
-    unsigned long ulong_TotSecSinceLastReset;
-    unsigned long ulong_TotSecEStop;
-    unsigned long ulong_TotSecFault;
-    unsigned long ulong_TotSecBlocked;
-    unsigned long ulong_TotSecIdle;
-    unsigned long ulong_TotSecInit;
-    unsigned long ulong_TotSecRunning;
-    unsigned long ulong_TotSecStarved;
-    unsigned long ulong_TotSecHeld;
-    unsigned long ulong_TotSecUnconstrained;
+    //      unsigned short uint_Cad99AnalogMsgCounter; // Cad99 message for Amazon
+    //      unsigned short uint_DeviceIdLength;
+    //      char           byte_DeviceId[8];
+    //      unsigned short uint_LevelPercent;
+    //      unsigned short uint_InError;
+    //      unsigned short uint_NotInUse;
+    //      unsigned short uint_Spare3;
 
+    //      unsigned int   uint_IntraloxInterlocksStatus;
+    //      unsigned char  uint_ChuteStatus[50];
+
+    /*      unsigned short uint_Error[8];
+          unsigned short uint_Jam[8];
+          unsigned short uint_ConfirmationPeBlocked[2];
+          unsigned short uint_BinPartiallyFull[2];
+          unsigned short uint_BinFull[2];
+          unsigned short uint_BinDisabled[2];
+          unsigned short uint_BinManualMode[2];
+          unsigned short uint_ConveyorState[6];*/
 };
 
 StructureArray02 getArray02() {
 
     StructureArray02 dataArray02 = {
-        1,2,3,4,{1,2,3,4},{1,2,3,4,5,6},1,2,3,4
-        ,1,2,{1,2,3,4,5,6,7,8},1,2,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8}
-        ,1,2,3,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8},1,2,3
-        ,1,2,3,4,{1,2,3,4,5,6,7,8},{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8},1,2,{1,2,3,4,5,6,7,8},{1,2,3,4,5,6,7,8},1,2
-        ,1,2,{1,2,3,4,5,6,7,8},1,2,3,4
-        ,1,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0}
-        ,1,2,3,4,5,6,7,8,9,10,11,123,132,141
+        1,2,3,4,{1,2,3,4},{1,2,3,4,5,6},1,2,3,4,5
+        ,1,2,3,4,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0},1,2,3,4,5,6
     };
     return dataArray02;
 }
@@ -101,72 +108,24 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
     Local<Array> uint_MotorSpeed=Array::New(isolate,6);for(int i=0;i<6;i++){uint_MotorSpeed->Set(context,i, Integer::New(isolate,array02.uint_MotorSpeed[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_MotorSpeed").ToLocalChecked(),uint_MotorSpeed);
 
     obj->Set(context,String::NewFromUtf8(isolate,"uint_CMStatus").ToLocalChecked(),Number::New(isolate, array02.uint_CMStatus));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_BarcodeReadCounter").ToLocalChecked(),Number::New(isolate, array02.uint_BarcodeReadCounter));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_DestinationReadCounter").ToLocalChecked(),Number::New(isolate, array02.uint_DestinationReadCounter));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_ConfirmationReadCounter").ToLocalChecked(),Number::New(isolate, array02.uint_ConfirmationReadCounter));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_ComData_Control").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_ComData_Control));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_ComData_Mode").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_ComData_Mode));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_ComData_Fault").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_ComData_Fault));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_ComData_Clear").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_ComData_Clear));
 
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_ScanNotificationCounter").ToLocalChecked(),Number::New(isolate, array02.uint_ScanNotificationCounter));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_BarcodeIdLocationLength").ToLocalChecked(),Number::New(isolate, array02.uint_BarcodeIdLocationLength));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_Align").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_Align));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_PassNumber").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_PassNumber));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_Vid_num1_8").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_Vid_num1_8));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_Vid_num9_16").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_Vid_num9_16));
 
-    Local<Array> byte_BarcodeIdLocation=Array::New(isolate,8);for(int i=0;i<8;i++){byte_BarcodeIdLocation->Set(context,i, Integer::New(isolate,array02.byte_BarcodeIdLocation[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_BarcodeIdLocation").ToLocalChecked(),byte_BarcodeIdLocation);
+    Local<Array> byte_MHE_IdData_PieceBcr=Array::New(isolate,40);for(int i=0;i<40;i++){byte_MHE_IdData_PieceBcr->Set(context,i, Integer::New(isolate,array02.byte_MHE_IdData_PieceBcr[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_MHE_IdData_PieceBcr").ToLocalChecked(),byte_MHE_IdData_PieceBcr);
 
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_SequentialNumber").ToLocalChecked(),Number::New(isolate, array02.uint_SequentialNumber));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_BarcodeLength").ToLocalChecked(),Number::New(isolate, array02.uint_BarcodeLength));
-
-    Local<Array> byte_Barcode=Array::New(isolate,28);for(int i=0;i<28;i++){byte_Barcode->Set(context,i, Integer::New(isolate,array02.byte_Barcode[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_Barcode").ToLocalChecked(),byte_Barcode);
-
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxSortMsgCounter").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxSortMsgCounter));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxSortMsgPLCID").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxSortMsgPLCID));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxSortMsgBarecodeLength").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxSortMsgBarecodeLength));
-
-    Local<Array> byte_IntraloxSortMsgBarecode=Array::New(isolate,28);for(int i=0;i<28;i++){byte_IntraloxSortMsgBarecode->Set(context,i, Integer::New(isolate,array02.byte_IntraloxSortMsgBarecode[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_IntraloxSortMsgBarecode").ToLocalChecked(),byte_IntraloxSortMsgBarecode);
-
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxSortMsgDestRequested").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxSortMsgDestRequested));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxSortMsgReason").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxSortMsgReason));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxSortMsgLength").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxSortMsgLength));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertNotificationCounter").ToLocalChecked(),Number::New(isolate, array02.uint_DivertNotificationCounter));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertSequentialNumber").ToLocalChecked(),Number::New(isolate, array02.uint_DivertSequentialNumber));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertBarcodeIdLocationLength").ToLocalChecked(),Number::New(isolate, array02.uint_DivertBarcodeIdLocationLength));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertBarcodeLength").ToLocalChecked(),Number::New(isolate, array02.uint_DivertBarcodeLength));
-
-    Local<Array> byte_DivertBarcodeIdLocation=Array::New(isolate,8);for(int i=0;i<8;i++){byte_DivertBarcodeIdLocation->Set(context,i, Integer::New(isolate,array02.byte_DivertBarcodeIdLocation[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DivertBarcodeIdLocation").ToLocalChecked(),byte_DivertBarcodeIdLocation);
-    Local<Array> byte_DivertBarcode=Array::New(isolate,28);for(int i=0;i<28;i++){byte_DivertBarcode->Set(context,i, Integer::New(isolate,array02.byte_DivertBarcode[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DivertBarcode").ToLocalChecked(),byte_DivertBarcode);
-
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_DestRequestedLength").ToLocalChecked(),Number::New(isolate, array02.uint_DestRequestedLength));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_SortedDestLength").ToLocalChecked(),Number::New(isolate, array02.uint_SortedDestLength));
-
-    Local<Array> byte_DestRequested=Array::New(isolate,8);for(int i=0;i<8;i++){byte_DestRequested->Set(context,i, Integer::New(isolate,array02.byte_DestRequested[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DestRequested").ToLocalChecked(),byte_DestRequested);
-    Local<Array> byte_SortedDest=Array::New(isolate,8);for(int i=0;i<8;i++){byte_SortedDest->Set(context,i, Integer::New(isolate,array02.byte_SortedDest[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_SortedDest").ToLocalChecked(),byte_SortedDest);
-
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_SortedCode").ToLocalChecked(),Number::New(isolate, array02.uint_SortedCode));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_Spare2").ToLocalChecked(),Number::New(isolate, array02.uint_Spare2));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_Cad99AnalogMsgCounter").ToLocalChecked(),Number::New(isolate, array02.uint_Cad99AnalogMsgCounter));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_DeviceIdLength").ToLocalChecked(),Number::New(isolate, array02.uint_DeviceIdLength));
-
-    Local<Array> byte_DeviceId=Array::New(isolate,8);for(int i=0;i<8;i++){byte_DeviceId->Set(context,i, Integer::New(isolate,array02.byte_DeviceId[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DeviceId").ToLocalChecked(),byte_DeviceId);
-
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_LevelPercent").ToLocalChecked(),Number::New(isolate, array02.uint_LevelPercent));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_InError").ToLocalChecked(),Number::New(isolate, array02.uint_InError));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_NotInUse").ToLocalChecked(),Number::New(isolate, array02.uint_NotInUse));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_Spare3").ToLocalChecked(),Number::New(isolate, array02.uint_Spare3));
-
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_IntraloxInterlocksStatus").ToLocalChecked(),Number::New(isolate, array02.uint_IntraloxInterlocksStatus));
-    Local<Array> byte_ChuteStatus=Array::New(isolate,50);for(int i=0;i<50;i++){byte_ChuteStatus->Set(context,i, Integer::New(isolate,array02.byte_ChuteStatus[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_ChuteStatus").ToLocalChecked(),byte_ChuteStatus);
-
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotPackagesInducted").ToLocalChecked(),Number::New(isolate, array02.ulong_TotPackagesInducted));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSuccessfulDivert").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSuccessfulDivert));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_AverageTput").ToLocalChecked(),Number::New(isolate, array02.ulong_AverageTput));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_Max3MinTput").ToLocalChecked(),Number::New(isolate, array02.ulong_Max3MinTput));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecSinceLastReset").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecSinceLastReset));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecEStop").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecEStop));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecFault").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecFault));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecBlocked").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecBlocked));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecIdle").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecIdle));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecInit").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecInit));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecRunning").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecRunning));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecStarved").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecStarved));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecHeld").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecHeld));
-    obj->Set(context,String::NewFromUtf8(isolate,"ulong_TotSecUnconstrained").ToLocalChecked(),Number::New(isolate, array02.ulong_TotSecUnconstrained));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_GlobalId").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_GlobalId));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_PrjSpec").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_PrjSpec));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_SecurityRoutineCode").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_SecurityRoutineCode));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_DynamicScreeningAlgo").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_DynamicScreeningAlgo));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_TsSSMMHHDD").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_TsSSMMHHDD));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_TsMM__YYYY").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_TsMM__YYYY));
 
     return obj;
 }
