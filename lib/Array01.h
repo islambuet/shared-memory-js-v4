@@ -18,7 +18,7 @@ struct StructureArray01
     //unsigned int   uint_EDS_ComData[8];
     unsigned int   uint_EDS_ComData_Control;     // uint_EDS_ComData[0]
     unsigned int   uint_EDS_ComData_TsSSMMHHDD;  // uint_EDS_ComData[1]
-    unsigned int   uint_EDS_ComData_TsMM__YYYY;  // uint_EDS_ComData[2]
+    unsigned int   uint_EDS_ComData_TsMM_YYYY;  // uint_EDS_ComData[2]
     unsigned short uint_EDS_ComData_Mode;        // uint_EDS_ComData[4].0_15
     unsigned short uint_EDS_ComData_State;       // uint_EDS_ComData[4].16_31
     unsigned short uint_EDS_ComData_Ins;         // uint_EDS_ComData[5].0_15
@@ -111,7 +111,7 @@ StructureArray01 getStructureArray01FromObject(Isolate* isolate,Local<Context> c
 
     array_01.uint_EDS_ComData_Control=obj->Get(context, String::NewFromUtf8(isolate,"uint_EDS_ComData_Control").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     array_01.uint_EDS_ComData_TsSSMMHHDD=obj->Get(context, String::NewFromUtf8(isolate,"uint_EDS_ComData_TsSSMMHHDD").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
-    array_01.uint_EDS_ComData_TsMM__YYYY=obj->Get(context, String::NewFromUtf8(isolate,"uint_EDS_ComData_TsMM__YYYY").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
+    array_01.uint_EDS_ComData_TsMM_YYYY=obj->Get(context, String::NewFromUtf8(isolate,"uint_EDS_ComData_TsMM_YYYY").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     array_01.uint_EDS_ComData_Mode=obj->Get(context, String::NewFromUtf8(isolate,"uint_EDS_ComData_Mode").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     array_01.uint_EDS_ComData_State=obj->Get(context, String::NewFromUtf8(isolate,"uint_EDS_ComData_State").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     array_01.uint_EDS_ComData_Ins=obj->Get(context, String::NewFromUtf8(isolate,"uint_EDS_ComData_Ins").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();

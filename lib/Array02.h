@@ -33,7 +33,7 @@ struct StructureArray02
     unsigned short uint_MHE_IdData_SecurityRoutineCode;       // uint_MHE_Id[15].0_15
     unsigned short uint_MHE_IdData_DynamicScreeningAlgo;  // uint_MHE_Id[15].16_31
     unsigned int   uint_MHE_IdData_TsSSMMHHDD;  // uint_MHE_Id[16]
-    unsigned int   uint_MHE_IdData_TsMM__YYYY;  // uint_MHE_Id[17]
+    unsigned int   uint_MHE_IdData_TsMM_YYYY;  // uint_MHE_Id[17]
 
     //      unsigned short uint_BarecodeReadCounter;
     //      unsigned short uint_DestinationReadCounter;
@@ -127,7 +127,7 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
     obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_SecurityRoutineCode").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_SecurityRoutineCode));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_DynamicScreeningAlgo").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_DynamicScreeningAlgo));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_TsSSMMHHDD").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_TsSSMMHHDD));
-    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_TsMM__YYYY").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_TsMM__YYYY));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_IdData_TsMM_YYYY").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_IdData_TsMM_YYYY));
 
     return obj;
 }
