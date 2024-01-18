@@ -15,6 +15,7 @@ struct StructureArray02
     unsigned short uint_OutputState[4];// 0:DO   1 : DO   2 : Enable drive b0 to b4
     unsigned short uint_MotorSpeed[6];
     unsigned short uint_CMStatus;
+    unsigned short uint_Spare2;
     //unsigned int   uint_MHE_ComData[10];
     unsigned int   uint_MHE_ComData_Control;  // uint_MHE_ComData[0]
     unsigned short uint_MHE_ComData_Mode;     // uint_MHE_ComData[4].0_15
@@ -90,7 +91,7 @@ struct StructureArray02
 StructureArray02 getArray02() {
 
     StructureArray02 dataArray02 = {
-        1,2,3,4,{1,2,3,4},{1,2,3,4,5,6},1,2,3,4,5
+        1,2,3,4,{1,2,3,4},{1,2,3,4,5,6},1,2,3,4,5,6
         ,1,2,3,4,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0},1,2,3,4,5,6
     };
     return dataArray02;
@@ -108,6 +109,7 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
     Local<Array> uint_MotorSpeed=Array::New(isolate,6);for(int i=0;i<6;i++){uint_MotorSpeed->Set(context,i, Integer::New(isolate,array02.uint_MotorSpeed[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_MotorSpeed").ToLocalChecked(),uint_MotorSpeed);
 
     obj->Set(context,String::NewFromUtf8(isolate,"uint_CMStatus").ToLocalChecked(),Number::New(isolate, array02.uint_CMStatus));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_Spare2").ToLocalChecked(),Number::New(isolate, array02.uint_Spare2));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_ComData_Control").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_ComData_Control));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_ComData_Mode").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_ComData_Mode));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_MHE_ComData_Fault").ToLocalChecked(),Number::New(isolate, array02.uint_MHE_ComData_Fault));
