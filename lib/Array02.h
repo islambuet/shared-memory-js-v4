@@ -92,6 +92,7 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
     obj->Set(context,String::NewFromUtf8(isolate,"uint_CMStatus").ToLocalChecked(),Number::New(isolate, array02.uint_CMStatus));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_BarecodeReadCounter").ToLocalChecked(),Number::New(isolate, array02.uint_BarecodeReadCounter));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_DestinationReadCounter").ToLocalChecked(),Number::New(isolate, array02.uint_DestinationReadCounter));
+    obj->Set(context,String::NewFromUtf8(isolate,"uint_ConfirmationReadCounter").ToLocalChecked(),Number::New(isolate, array02.uint_ConfirmationReadCounter));
 
     obj->Set(context,String::NewFromUtf8(isolate,"uint_ScanNotificationCounter").ToLocalChecked(),Number::New(isolate, array02.uint_ScanNotificationCounter));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_BarecodeIdLocationLength").ToLocalChecked(),Number::New(isolate, array02.uint_BarecodeIdLocationLength));
