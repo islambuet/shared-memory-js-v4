@@ -40,7 +40,7 @@ struct StructureArray01
     unsigned short uint_IncPMCountMsgReadCounter;
     unsigned short uint_spare3;
 
-    unsigned short uint_MPCouter[24];
+    unsigned short uint_MPCouter[26];
     //unsigned short uint_DeviceConnected[4];
     //unsigned int   uint_IntraloxStatusStatus[3];
     //unsigned int   uint_ChuteStatus[50];
@@ -56,7 +56,7 @@ StructureArray01 getArray01() {
         ,1,2,3,4,{1,2,3,4,5,6,7,8},6,7,{1,2,3,4,5,6,7,8}
         ,1,2,3,4
         ,1,2,3,4,5,67
-        ,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4}
+        ,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6}
     };
     return dataArray01;
 }
@@ -109,7 +109,7 @@ StructureArray01 getStructureArray01FromObject(Isolate* isolate,Local<Context> c
 
 
     Local<Array> uint_MPCouter=Local<Array>::Cast(obj->Get(context, String::NewFromUtf8(isolate,"uint_MPCouter").ToLocalChecked()).ToLocalChecked());
-    for(int i=0;i<24;i++){
+    for(int i=0;i<26;i++){
         array_01.uint_MPCouter[i]=uint_MPCouter->Get(context, i).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     }
     return array_01;

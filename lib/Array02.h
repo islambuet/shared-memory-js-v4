@@ -60,8 +60,8 @@ struct StructureArray02
     unsigned short uint_IncMPCountMsgCounter;  // Message to increase the Counter of a MP
     unsigned short uint_MPId;
 
-    unsigned short uint_MPState[24];
-    unsigned short uint_MPError[24]; // b0:Estop b1:Modbus comm err b2:Motor Fault b3:Jam Detection b4:Divert/Rat/Mabs Fault
+    unsigned short uint_MPState[26];
+    unsigned short uint_MPError[26]; // b0:Estop b1:Modbus comm err b2:Motor Fault b3:Jam Detection b4:Divert/Rat/Mabs Fault
     //unsigned int   uint_IntraloxInterlocksStatus;  //
     //unsigned char  uint_ChuteStatus[50];
 };
@@ -75,7 +75,7 @@ StructureArray02 getArray02() {
         ,1,2,3,4,{1,2,3,4,5,6,7,8},{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8},7,8,{1,2,3,4,5,6,7,8},{1,2,3,4,5,6,7,8},1,2
         ,1,2,{1,2,3,4,5,6,7,8},4,5,6,7
         ,1,2
-        ,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4},{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4}
+        ,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6},{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6}
     };
     return dataArray02;
 }
@@ -135,8 +135,8 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
     obj->Set(context,String::NewFromUtf8(isolate,"uint_MPId").ToLocalChecked(),Number::New(isolate, array02.uint_MPId));
 
 
-    Local<Array> uint_MPState=Array::New(isolate,24);for(int i=0;i<24;i++){uint_MPState->Set(context,i, Integer::New(isolate,array02.uint_MPState[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_MPState").ToLocalChecked(),uint_MPState);
-    Local<Array> uint_MPError=Array::New(isolate,24);for(int i=0;i<24;i++){uint_MPError->Set(context,i, Integer::New(isolate,array02.uint_MPError[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_MPError").ToLocalChecked(),uint_MPError);
+    Local<Array> uint_MPState=Array::New(isolate,26);for(int i=0;i<26;i++){uint_MPState->Set(context,i, Integer::New(isolate,array02.uint_MPState[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_MPState").ToLocalChecked(),uint_MPState);
+    Local<Array> uint_MPError=Array::New(isolate,26);for(int i=0;i<26;i++){uint_MPError->Set(context,i, Integer::New(isolate,array02.uint_MPError[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_MPError").ToLocalChecked(),uint_MPError);
 
 
     return obj;
