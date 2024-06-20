@@ -40,7 +40,7 @@ struct StructureArray02
     unsigned short uint_DivertBarecodeIdLocationLength;
     unsigned short uint_DivertBarecodeLength;
     char           byte_DivertBarecodeIdLocation[4];
-    char           byte_DivertBarecode[24];
+    char           byte_DivertBarecode[4];
     unsigned short uint_DestRequestedLength;
     unsigned short uint_SortedDestLength;
     char           byte_DestRequested[4];
@@ -74,7 +74,7 @@ StructureArray02 getArray02() {
         1,2,3,4,{1,2,3,4},{1,2},7,8,9,10
         ,1,2,{1,2,3,4},4,5,{1,2,3,4}
         ,1,2,3,4,{1,2,3,4},6,7,8
-        ,1,2,3,4,{1,2,3,4},{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4},7,8,{1,2,3,4},{1,2,3,4},1,2
+        ,1,2,3,4,{1,2,3,4},{1,2,3,4},7,8,{1,2,3,4},{1,2,3,4},1,2
         ,1,2,{1,2,3,4,5,6,7,8},4,5,6,7
         ,1,2
         ,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6},{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6},{1,2,3,4,5,6,7,8,9,0,1,2},{1,2,3,4,5,6,7,8,9,0,1,2}
@@ -117,7 +117,7 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
     obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertBarecodeIdLocationLength").ToLocalChecked(),Number::New(isolate, array02.uint_DivertBarecodeIdLocationLength));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_DivertBarecodeLength").ToLocalChecked(),Number::New(isolate, array02.uint_DivertBarecodeLength));
     Local<Array> byte_DivertBarecodeIdLocation=Array::New(isolate,4);for(int i=0;i<4;i++){byte_DivertBarecodeIdLocation->Set(context,i, Integer::New(isolate,array02.byte_DivertBarecodeIdLocation[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DivertBarecodeIdLocation").ToLocalChecked(),byte_DivertBarecodeIdLocation);
-    Local<Array> byte_DivertBarecode=Array::New(isolate,24);for(int i=0;i<24;i++){byte_DivertBarecode->Set(context,i, Integer::New(isolate,array02.byte_DivertBarecode[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DivertBarecode").ToLocalChecked(),byte_DivertBarecode);
+    Local<Array> byte_DivertBarecode=Array::New(isolate,4);for(int i=0;i<4;i++){byte_DivertBarecode->Set(context,i, Integer::New(isolate,array02.byte_DivertBarecode[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DivertBarecode").ToLocalChecked(),byte_DivertBarecode);
     obj->Set(context,String::NewFromUtf8(isolate,"uint_DestRequestedLength").ToLocalChecked(),Number::New(isolate, array02.uint_DestRequestedLength));
     obj->Set(context,String::NewFromUtf8(isolate,"uint_SortedDestLength").ToLocalChecked(),Number::New(isolate, array02.uint_SortedDestLength));
     Local<Array> byte_DestRequested=Array::New(isolate,4);for(int i=0;i<4;i++){byte_DestRequested->Set(context,i, Integer::New(isolate,array02.byte_DestRequested[i]));}obj->Set(context,String::NewFromUtf8(isolate,"byte_DestRequested").ToLocalChecked(),byte_DestRequested);
