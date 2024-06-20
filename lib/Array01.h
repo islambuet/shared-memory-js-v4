@@ -17,16 +17,16 @@ struct StructureArray01
     unsigned short uint_Data[4]; // 0; DI  1:DI  2:SafetyPLC In 3:Unused
     unsigned short uint_BarcodeCounter;
     unsigned short uint_BarecodeMsgLength;
-    char           byte_BarecodeMsg[64];
+    char           byte_BarecodeMsg[4];
 
     unsigned short uint_DestinationCounter;      // SO2 message from Amazon
     unsigned short uint_DestinationSequentialNumber;
     unsigned short uint_DestinationCounterLength;
     unsigned short uint_spare1;
-    char           byte_Destination[8];
+    char           byte_Destination[4];
     unsigned short uint_AlternateDestinationLength;
     unsigned short uint_spare2;
-    char           byte_AlternateDestination[8];
+    char           byte_AlternateDestination[4];
 
     unsigned short uint_ConfirmationCounter;     // SO4 message from Intralox
     unsigned short uint_ConfirmationSequentialNumber;
@@ -52,8 +52,8 @@ StructureArray01 getArray01() {
     StructureArray01 dataArray01 =
     {
         1,2,3,4,5
-        ,{1,2,3,4},2,3,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4}
-        ,1,2,3,4,{1,2,3,4,5,6,7,8},6,7,{1,2,3,4,5,6,7,8}
+        ,{1,2,3,4},2,3,{1,2,3,4}
+        ,1,2,3,4,{1,2,3,4},6,7,{1,2,3,4}
         ,1,2,3,4
         ,1,2,3,4,5,67
         ,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6}
@@ -75,7 +75,7 @@ StructureArray01 getStructureArray01FromObject(Isolate* isolate,Local<Context> c
     array_01.uint_BarcodeCounter=obj->Get(context, String::NewFromUtf8(isolate,"uint_BarcodeCounter").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     array_01.uint_BarecodeMsgLength=obj->Get(context, String::NewFromUtf8(isolate,"uint_BarecodeMsgLength").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     Local<Array> byte_BarecodeMsg=Local<Array>::Cast(obj->Get(context, String::NewFromUtf8(isolate,"byte_BarecodeMsg").ToLocalChecked()).ToLocalChecked());
-    for(int i=0;i<64;i++){
+    for(int i=0;i<4;i++){
         array_01.byte_BarecodeMsg[i]=byte_BarecodeMsg->Get(context, i).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     }
 
@@ -84,13 +84,13 @@ StructureArray01 getStructureArray01FromObject(Isolate* isolate,Local<Context> c
     array_01.uint_DestinationCounterLength=obj->Get(context, String::NewFromUtf8(isolate,"uint_DestinationCounterLength").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     array_01.uint_spare1=obj->Get(context, String::NewFromUtf8(isolate,"uint_spare1").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     Local<Array> byte_Destination=Local<Array>::Cast(obj->Get(context, String::NewFromUtf8(isolate,"byte_Destination").ToLocalChecked()).ToLocalChecked());
-    for(int i=0;i<8;i++){
+    for(int i=0;i<4;i++){
         array_01.byte_Destination[i]=byte_Destination->Get(context, i).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     }
     array_01.uint_AlternateDestinationLength=obj->Get(context, String::NewFromUtf8(isolate,"uint_AlternateDestinationLength").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     array_01.uint_spare2=obj->Get(context, String::NewFromUtf8(isolate,"uint_spare2").ToLocalChecked()).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     Local<Array> byte_AlternateDestination=Local<Array>::Cast(obj->Get(context, String::NewFromUtf8(isolate,"byte_AlternateDestination").ToLocalChecked()).ToLocalChecked());
-    for(int i=0;i<8;i++){
+    for(int i=0;i<4;i++){
         array_01.byte_AlternateDestination[i]=byte_AlternateDestination->Get(context, i).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     }
 
