@@ -17,16 +17,16 @@ struct StructureArray01
     unsigned short uint_Data[4]; // 0; DI  1:DI  2:SafetyPLC In 3:Unused
     unsigned short uint_BarcodeCounter;
     unsigned short uint_BarecodeMsgLength;
-    char           byte_BarecodeMsg[4];
+    char           byte_BarecodeMsg[4]; //64
 
     unsigned short uint_DestinationCounter;      // SO2 message from Amazon
     unsigned short uint_DestinationSequentialNumber;
     unsigned short uint_DestinationCounterLength;
     unsigned short uint_spare1;
-    char           byte_Destination[4];
+    char           byte_Destination[4];//8
     unsigned short uint_AlternateDestinationLength;
     unsigned short uint_spare2;
-    char           byte_AlternateDestination[4];
+    char           byte_AlternateDestination[4];//8
 
     unsigned short uint_ConfirmationCounter;     // SO4 message from Intralox
     unsigned short uint_ConfirmationSequentialNumber;
@@ -41,6 +41,7 @@ struct StructureArray01
     unsigned short uint_spare3;
 
     unsigned short uint_MPCouter[26];
+    unsigned int   udint_SpareArray[34];
     //unsigned short uint_DeviceConnected[4];
     //unsigned int   uint_IntraloxStatusStatus[3];
     //unsigned int   uint_ChuteStatus[50];
@@ -56,7 +57,7 @@ StructureArray01 getArray01() {
         ,1,2,3,4,{1,2,3,4},6,7,{1,2,3,4}
         ,1,2,3,4
         ,1,2,3,4,5,67
-        ,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6}
+        ,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6},{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4}
     };
     return dataArray01;
 }
@@ -111,6 +112,10 @@ StructureArray01 getStructureArray01FromObject(Isolate* isolate,Local<Context> c
     Local<Array> uint_MPCouter=Local<Array>::Cast(obj->Get(context, String::NewFromUtf8(isolate,"uint_MPCouter").ToLocalChecked()).ToLocalChecked());
     for(int i=0;i<26;i++){
         array_01.uint_MPCouter[i]=uint_MPCouter->Get(context, i).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
+    }
+    Local<Array> udint_SpareArray=Local<Array>::Cast(obj->Get(context, String::NewFromUtf8(isolate,"udint_SpareArray").ToLocalChecked()).ToLocalChecked());
+    for(int i=0;i<34;i++){
+        array_01.udint_SpareArray[i]=udint_SpareArray->Get(context, i).ToLocalChecked()->ToNumber(context).ToLocalChecked()->Value();
     }
     return array_01;
 }

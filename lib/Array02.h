@@ -13,7 +13,7 @@ struct StructureArray02
     unsigned short uint_State;
     unsigned short uint_Spare1;
     unsigned short uint_OutputState[4]; //0:DO   1:DO   2:Enable drive b0 to b4
-    unsigned short uint_MotorSpeed[2];
+    unsigned short uint_MotorSpeed[2];//6
     unsigned short uint_CMStatus;
     unsigned short uint_BarecodeReadCounter;
     unsigned short uint_DestinationReadCounter;
@@ -21,16 +21,16 @@ struct StructureArray02
 
     unsigned short uint_ScanNotificationCounter;  // SO1 message for Amazon
     unsigned short uint_BarecodeIdLocationLength;
-    char           byte_BarecodeIdLocation[4];
+    char           byte_BarecodeIdLocation[4];//8
     unsigned short uint_SequentialNumber;
     unsigned short uint_BarecodeLength;
-    char           byte_Barecode[4];
+    char           byte_Barecode[4];//28
 
     unsigned short uint_IntraloxSortMsgCounter;  // Sort message for intralox
     unsigned short uint_Spare0;
     unsigned int   uint_IntraloxSortMsgPLCID;
     unsigned int   uint_IntraloxSortMsgBarecodeLength;
-    char           byte_IntraloxSortMsgBarecode[4];
+    char           byte_IntraloxSortMsgBarecode[4];//28
     unsigned int   uint_IntraloxSortMsgDestRequested;
     unsigned int   uint_IntraloxSortMsgReason;
     unsigned int   uint_IntraloxSortMsgLength; //in mm
@@ -39,12 +39,12 @@ struct StructureArray02
     unsigned short uint_DivertSequentialNumber;
     unsigned short uint_DivertBarecodeIdLocationLength;
     unsigned short uint_DivertBarecodeLength;
-    char           byte_DivertBarecodeIdLocation[4];
-    char           byte_DivertBarecode[4];
+    char           byte_DivertBarecodeIdLocation[4];//8
+    char           byte_DivertBarecode[4];//28
     unsigned short uint_DestRequestedLength;
     unsigned short uint_SortedDestLength;
-    char           byte_DestRequested[4];
-    char           byte_SortedDest[4];
+    char           byte_DestRequested[4];//8
+    char           byte_SortedDest[4];//8
     unsigned short uint_SortedCode;
     unsigned short uint_Spare2;
 
