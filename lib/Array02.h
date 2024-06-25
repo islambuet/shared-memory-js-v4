@@ -66,6 +66,10 @@ struct StructureArray02
     //unsigned char  uint_ChuteStatus[50];
     unsigned int uint_HMI_Alarms[12];
     unsigned int uint_HMI_Jams[12];
+
+    unsigned int udint_InputsBoardIndex;
+    unsigned short uint_InputsState[24];
+    unsigned char m_ucConvState[60];
 };
 
 StructureArray02 getArray02() {
@@ -78,6 +82,7 @@ StructureArray02 getArray02() {
         ,1,2,{1,2,3,4,5,6,7,8},4,5,6,7
         ,1,2
         ,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6},{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6},{1,2,3,4,5,6,7,8,9,0,1,2},{1,2,3,4,5,6,7,8,9,0,1,2}
+        ,1,{1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4},{1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,20,1,2,3,4,5,6,7,8,9,30,1,2,3,4,5,6,7,8,9,40,1,2,3,4,5,6,7,8,9,50,1,2,3,4,5,6,7,8,9,60}
     };
     return dataArray02;
 }
@@ -141,6 +146,10 @@ Local<Object> getObjectFromStructureArray02(Isolate* isolate,Local<Context> cont
     Local<Array> uint_MPError=Array::New(isolate,26);for(int i=0;i<26;i++){uint_MPError->Set(context,i, Integer::New(isolate,array02.uint_MPError[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_MPError").ToLocalChecked(),uint_MPError);
     Local<Array> uint_HMI_Alarms=Array::New(isolate,12);for(int i=0;i<12;i++){uint_HMI_Alarms->Set(context,i, Integer::New(isolate,array02.uint_HMI_Alarms[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_HMI_Alarms").ToLocalChecked(),uint_HMI_Alarms);
     Local<Array> uint_HMI_Jams=Array::New(isolate,12);for(int i=0;i<12;i++){uint_HMI_Jams->Set(context,i, Integer::New(isolate,array02.uint_HMI_Jams[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_HMI_Jams").ToLocalChecked(),uint_HMI_Jams);
+
+    obj->Set(context,String::NewFromUtf8(isolate,"udint_InputsBoardIndex").ToLocalChecked(),Number::New(isolate, array02.udint_InputsBoardIndex));
+    Local<Array> uint_InputsState=Array::New(isolate,24);for(int i=0;i<24;i++){uint_InputsState->Set(context,i, Integer::New(isolate,array02.uint_InputsState[i]));}obj->Set(context,String::NewFromUtf8(isolate,"uint_InputsState").ToLocalChecked(),uint_InputsState);
+    Local<Array> m_ucConvState=Array::New(isolate,60);for(int i=0;i<60;i++){m_ucConvState->Set(context,i, Integer::New(isolate,array02.m_ucConvState[i]));}obj->Set(context,String::NewFromUtf8(isolate,"m_ucConvState").ToLocalChecked(),m_ucConvState);
 
 
     return obj;
