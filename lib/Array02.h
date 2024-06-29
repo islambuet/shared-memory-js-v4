@@ -64,12 +64,11 @@ struct StructureArray02
     unsigned short uint_MPError[26]; // b0:Estop b1:Modbus comm err b2:Motor Fault b3:Jam Detection b4:Divert/Rat/Mabs Fault
     //unsigned int   uint_IntraloxInterlocksStatus;  //
     //unsigned char  uint_ChuteStatus[50];
-    unsigned int uint_HMI_Alarms[12];
-    unsigned int uint_HMI_Jams[12];
-
+    int uint_HMI_Alarms[12];
+    int uint_HMI_Jams[12];
     unsigned int udint_InputsBoardIndex;
-    unsigned short uint_InputsState[24];
-    unsigned char m_ucConvState[60];
+    short int uint_InputsState[24];
+    char m_ucConvState[60];
 };
 
 StructureArray02 getArray02() {
